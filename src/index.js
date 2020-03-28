@@ -4,11 +4,15 @@ import { Provider } from 'react-redux'
 import WebFontLoader from 'webfontloader'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import { createBrowserHistory } from 'history'
+import { ConnectedRouter } from 'connected-react-router'
+
 
 import './index.css'
 import App from './App'
-import rootReducer from './reducer'
+import createRootReducer from './reducer'
 import rootSaga from './sagas'
+import { routerMiddleware } from 'connected-react-router'
 
 WebFontLoader.load({
     google: {
@@ -16,17 +20,26 @@ WebFontLoader.load({
     }
 })
 
+const history = createBrowserHistory()
+
 const initStore = () => {
     const sagaMiddleware = createSagaMiddleware()
-    const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+    const store = createStore(
+        createRootReducer(history),
+        applyMiddleware(
+            routerMiddleware(history),
+            sagaMiddleware,
+        )
+    )
     sagaMiddleware.run(rootSaga)
     return store
 }
-  
 
 ReactDOM.render(
     <Provider store={initStore()}>
-        <App />
+        <ConnectedRouter history={history}>
+            <App />
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 )

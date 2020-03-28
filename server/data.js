@@ -82,6 +82,6 @@ module.exports.getBinById = async (id) => {
 /** @returns {Promise<Array<import('./typings').Data.Output.Bin>>} */
 module.exports.listLatestBins = async () => {
     const collection = await getBinCollection()
-    const list = await collection.find().sort({ _id: 1 }).limit(5).toArray()
+    const list = await collection.find().sort({ _id: -1 }).limit(5).toArray()
     return list.map(mongoBinToOutputBin)
 }
