@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 
@@ -44,9 +45,6 @@ app.get(
         }
     }
 )
-
-
-
 
 app.use(
     /** 
