@@ -14,9 +14,8 @@ Styles are a bit messy here
 ### `yarn start`
 Starts client server on port 3000. Open this port in browser to visit client application.
 
-## What app is capable of
-It stores bins(plain text that could be shared by url)
+## App is capable of showing bins by url
 ![](./public/view_bin.png)
-It creates bins
+## App is capable of creating bin
 ![](./public/create_bin.png)
 
