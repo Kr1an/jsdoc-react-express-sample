@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'recompose'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const Comp = (props) => (
+    <>
+        <div>
+            {props.test}
+        </div>
+        <div>{process.env.REACT_APP_SERVER_URL}</div>
+    </>
+)
 
-export default App;
+
+export default compose(
+    connect(
+        state => state
+    )
+)(Comp)
