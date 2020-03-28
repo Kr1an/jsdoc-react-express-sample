@@ -9,7 +9,9 @@ Starts server on port 8000 which is specified by `API_PORT` env variable in `ser
 
 Client code expects server to be up. Server url is configured by `REACT_APP_SERVER_URL` env variable in `.env`
 
-Styles are a bit messy here
+Client code uses its own url to generate urls for sharing. Configured by `REACT_APP_CLIENT_URL` env variable in `.env`
+
+`Styles are a bit messy in client application. It's not the main point of this sample thought`
 
 ### `yarn start`
 Starts client server on port 3000. Open this port in browser to visit client application.
